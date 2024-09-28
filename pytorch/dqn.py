@@ -78,7 +78,7 @@ class DQNAgent:
         q = qs[np.arange(len(action)), action]
 
         next_qs = self.qnet_target(next_state)
-        next_q = next_qs.max(1)[0]
+        next_q = next_qs.max(1)[0]  # [0] are max values, [1] are corresponding indices
 
         next_q.detach()
         target = reward + (1 - done) * self.gamma * next_q
